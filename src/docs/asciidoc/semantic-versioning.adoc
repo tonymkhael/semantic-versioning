@@ -1,0 +1,52 @@
+:sectnums:
+:toc: left
+:toclevels: 3
+:icons: font
+:iconfont-remote!:
+:iconfont-name: font-awesome-4.4.0/css/font-awesome.min
+:stylesdir: css
+:iconfont-cdn: https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css
+
+= Semantic Versioning
+Tony Mkhael <tony.mkhael@murex.com>
+{docversion}
+
+
+== What is this about?
+
+if you're unfamiliar with semantic versioning, please start reading http://semver.org/[Here].
+The rest of the document will focus on how to effectively use semantic versioning for your gradle projects.
+It will guide you in detail through all the steps needed to
+
+. Setup a java project
+. Building it using gradle
+. Documenting using javadoc and asciidoctor
+. Publishing to a nexus repository
+. Handling versioning using Netflix nebula
+
+== Detailed guide
+
+In this tutorial, we will interact with the below tools/libraries.
+Although no specific knowledge is required, it is always better to have a quick look around to see what's behind each one.
+
+* http://www.gradle.org[Gradle]: Highly flexible build tool
+* http://www.asciidoctor.org[Asciidoctor]: Toolset to generate cool documentation from pure text format
+* https://nebula-plugins.github.io/[Nebula]: Gradle plugins provided by NetFlix
+* http://www.jenkins-ci.org/[Jenkins CI]: Maven repository server
+* http://www.sonatype.org/nexus/[Nexus]: Maven repository server
+
+=== Setting up your project
+
+First, let's start by
+
+
+See how the version of this document is injected from the build
+{docversion}
+
+Here's a source code snippet
+
+[source,java]
+.SemanticVersioning.java
+----
+include::{sourceDir}/murex/cl/example/SemanticVersioning.java[tags=anchor]
+----
