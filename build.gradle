@@ -1,0 +1,101 @@
+plugins {
+    id 'nebula.nebula-release' version '4.0.1'
+    // Below is related to Note1 below
+    /*
+    id 'nebula.maven-publish' version '4.4.4'
+    id 'nebula.source-jar' version '4.4.4'
+    id 'nebula.javadoc-jar' version '4.4.4'
+    */
+}
+
+project.group = 'murex.cl'
+
+apply plugin: 'java'
+
+project.description = 'CL :: Semantic versioning'
+
+dependencies {
+    compile "org.slf4j:slf4j-api:1.7.21"
+    compile "org.slf4j:slf4j-log4j12:1.7.21"
+    testCompile "junit:junit:4.12"
+    testCompile "org.mockito:mockito-all:2.0.2-beta"
+}
+
+repositories {
+   maven {
+      url 'http://ci-blend-lx/nexus/content/groups/public/'
+   }
+}
+
+ // Note1: Normally this should work, but somehow doesn't when gradle tries to publish metadata
+ /*
+apply plugin: 'maven-publish' 
+apply plugin: 'nebula.source-jar'
+apply plugin: 'nebula.javadoc-jar'
+
+    publishing {
+
+            repositories {
+                maven {
+                    url "http://nexus/nexus/content/repositories/murex-components-${project.version.toString().endsWith('-SNAPSHOT') ? 'snapshots' : 'releases' }"
+                    credentials {
+                        username 'murex-components-calclayer-deployer'
+                        password 'C@lcl@yer'
+                    }
+                }
+            }
+
+            publications {
+                nebula(MavenPublication) {
+                    uploadArchives.repositories.mavenDeployer.pom.version = version
+                }
+            }
+    }
+*/
+
+apply plugin: 'nebula.nebula-release'
+
+release {
+  // Let the default versioning strategy be the maven style -SNAPSHOT, instead of nebula's devSnapshot
+  defaultVersionStrategy = org.ajoberstar.gradle.git.release.opinion.Strategies.SNAPSHOT
+}
+
+apply plugin: 'maven'    
+    
+    afterEvaluate {
+        uploadArchives {
+
+            
+       task packageJavadoc(type: Jar, dependsOn: 'javadoc') {
+           from javadoc.destinationDir
+           classifier = 'javadoc'
+       }
+       task packageSources(type: Jar) {
+           from sourceSets.main.allSource
+           classifier = 'sources'
+       }
+       artifacts {
+           archives packageJavadoc
+           archives packageSources
+       }
+            
+
+            repositories {
+                mavenDeployer {
+                    repository(url: "http://nexus/nexus/content/repositories/murex-components-releases") {
+                        authentication(userName: "murex-components-calclayer-deployer", password: "C@lcl@yer")
+                    }
+                    snapshotRepository(url: "http://nexus/nexus/content/repositories/murex-components-snapshots") {
+                        authentication(userName: "murex-components-calclayer-deployer", password: "C@lcl@yer")
+                    }
+                }
+            }
+        }
+
+        tasks.release.finalizedBy tasks.uploadArchives
+    }
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.6'
+}
