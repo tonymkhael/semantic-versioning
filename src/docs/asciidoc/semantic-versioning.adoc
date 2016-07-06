@@ -451,3 +451,6 @@ gradlew <candidate|final> -Prelease.version=1.2.3 // <2>
 
 === The CI part
 
+Here we assume you have a jenkins server running somewhere, with the "new" pipelines scripts.
+We will be creating 2 jobs, 1 for building the project, another to handle the release part.
+
