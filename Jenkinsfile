@@ -17,6 +17,6 @@ node('master') { // <1>
     sh "./gradlew snapshot generateHtml5 generatePdf --stacktrace"
    }
 
-   publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/asciidoc/html5', reportFiles: 'semantic-versioning.html', reportName: 'Documentation']) // <4>
+   publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/asciidoc/html5', reportFiles: 'semantic-versioning.html', reportName: 'Documentation']) // <4>
 
 }
