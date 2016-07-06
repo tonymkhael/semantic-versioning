@@ -106,8 +106,6 @@ class AsciiDoctorDefault extends org.asciidoctor.gradle.AsciidoctorTask { // <4>
                 'highlightjs-theme': 'github',
                 'imagesdir': 'images',
                 'imagesoutdir': 'images',
-                'sourceDir': '../../main/java',
-                'rootDir': '../../../',
                 'setanchors': 'true',
                 'idprefix': '',
                 'idseparator': '-',

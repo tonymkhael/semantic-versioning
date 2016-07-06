@@ -6,6 +6,8 @@
 :iconfont-name: font-awesome-4.4.0/css/font-awesome.min
 :stylesdir: css
 :iconfont-cdn: https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css
+:sourceDir: '../../main/java'
+:rootDir: '../../../'
 
 = OSS style project
 Tony Mkhael <tony.mkhael@gmail.com>
