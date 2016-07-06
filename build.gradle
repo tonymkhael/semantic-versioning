@@ -126,8 +126,6 @@ class AsciiDoctorDefault extends org.asciidoctor.gradle.AsciidoctorTask {
 
         requires 'asciidoctor-diagram'
 
-        def v = project.version.toString()
-
         attributes 'build-gradle': new File('build.gradle'),
                 'source-highlighter': 'highlightjs',
                 'highlightjs-theme': 'github',
@@ -138,7 +136,7 @@ class AsciiDoctorDefault extends org.asciidoctor.gradle.AsciidoctorTask {
                 'idprefix': '',
                 'idseparator': '-',
                 'docinfo1': 'true',
-                'docversion': v
+                'docVersion': project.version.toString()
     }
 
 }
