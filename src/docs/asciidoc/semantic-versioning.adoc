@@ -12,7 +12,7 @@ Tony Mkhael <tony.mkhael@gmail.com>
 {docVersion}
 
 
-== What is this about? What it isn't
+== What is this about?
 
 if you're unfamiliar with semantic versioning, please start reading http://semver.org/[Here].
 The rest of the document will focus on how to effectively use semantic versioning for your OSS projects.
@@ -301,7 +301,7 @@ include::{rootDir}/build.gradle[tags=publishing]
 ----
 <1> Configure the publishing (gradle maven-publish-plugin)
 <2> Configure some maven repositories for publishing
-<3> Add a nexus repository hosted on myserver, named myrepo{versiontype}, with versiontype being either empty or "-SNAPSHOT" (more on that on the nebula section)
+<3> Add a nexus repository hosted on myserver, suffixed by {versiontype}, with versiontype being either empty or "-SNAPSHOT" (more on that on the nebula section)
 
 === Semantic versioning
 
@@ -506,4 +506,4 @@ Here are the full contents of the build.gradle used, which you can also find in 
 include::{rootDir}/build.gradle[]
 ----
 
-Thank you for making it this far!
+Thank you for making it this far, and hope this helps you in some way!
