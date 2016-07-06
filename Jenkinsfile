@@ -1,4 +1,4 @@
-node {
+node('master') {
     
    // Mark the code checkout 'stage'....
    stage 'Checkout'
