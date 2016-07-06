@@ -604,6 +604,6 @@ This tutorial focused on the technical aspects, but there are more to it:
 * Contributor guide
 * ..
 
-You can have more on this on the Netflix nebula page https://nebula-plugins.github.io/[Here].
+You can have more on this on the Netflix nebula page [here](https://nebula-plugins.github.io/).
 
 Thank you for making it this far, and hope this helps you in some way!
