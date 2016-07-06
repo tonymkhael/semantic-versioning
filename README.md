@@ -1,7 +1,5 @@
 # OSS style project
 Tony Mkhael <tony.mkhael@gmail.com>
-{docVersion}
-
 
 ## What is this about?
 
