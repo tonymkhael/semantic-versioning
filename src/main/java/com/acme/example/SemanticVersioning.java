@@ -1,15 +1,16 @@
-package murex.cl.example;
+package com.acme.example;
 
-public final class SemanticVersioning{
+public final class SemanticVersioning {
 
   //tag::anchor[]
 
   /**
    * A sample for the javadoc
-   * @since 0.0.1
+   *
    * @param args Tha arguments to this magnificient application
+   * @since 0.0.1
    */
-  public static void main(String[] args){
+  public static void main(String[] args) {
     System.out.println("Hello Semantic versioning");
   }
 

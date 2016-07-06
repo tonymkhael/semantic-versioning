@@ -21,7 +21,7 @@ plugins {
 //end::nebula-project[]
 
 //tag::java[]
-project.group = 'com.acme.example' //<1>
+project.group = nexusGroup //<1>
 project.description = 'Semantic versioning'
 
 //end::java[]
@@ -63,10 +63,11 @@ publishing { // <1>
 
     repositories { // <2>
         maven {
-            url "http://myserver/content/repositories/myrepo-${project.version.toString().endsWith('-SNAPSHOT') ? 'snapshots' : 'releases'}" // <3>
+            url "http://${nexusHost}/content/repositories/${nexusRepo}-${project.version.toString().endsWith('-SNAPSHOT') ? 'snapshots' : 'releases'}"
+            // <3>
             credentials {
-                username 'user'
-                password 'pw'
+                username "${nexusUser}"
+                password "${nexusPassword}"
             }
         }
         mavenLocal()
@@ -104,6 +105,8 @@ class AsciiDoctorDefault extends org.asciidoctor.gradle.AsciidoctorTask { // <4>
         attributes 'build-gradle': new File('build.gradle'),
                 'source-highlighter': 'highlightjs',
                 'highlightjs-theme': 'github',
+                'sourceDir': '../../main/java',
+                'rootDir': '../../../',
                 'imagesdir': 'images',
                 'imagesoutdir': 'images',
                 'setanchors': 'true',
